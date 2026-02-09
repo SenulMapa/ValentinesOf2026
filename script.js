@@ -106,14 +106,14 @@ function switchScreen(fromId, toId) {
 
 // --- EVENT LISTENERS SETUP ---
 function setupEventListeners() {
-    // "NO" button evasion
+    // "NO" button evasion with radius clamp
     setupNoButton();
     
     // Coke game
     setupCokeGame();
 }
 
-// --- "NO" BUTTON EVASION ---
+// --- "NO" BUTTON EVASION WITH RADIUS CLAMP ---
 const noTexts = [
     "Are you sure?",
     "Try again 😏",
@@ -124,25 +124,48 @@ const noTexts = [
     "Think again",
     "Yes is better",
     "Not an option",
-    "Try the other one"
+    "Try the other one",
+    "Be nice!",
+    "Come on!",
+    "Just click Yes!",
+    "Pretty please?",
+    "You know you want to"
 ];
 
 function setupNoButton() {
     const noBtn = document.getElementById('btn-no');
     
     function moveNoButton() {
-        // Calculate safe boundaries
+        // Get button dimensions
         const btnRect = noBtn.getBoundingClientRect();
         const btnWidth = btnRect.width || 120;
         const btnHeight = btnRect.height || 48;
         
-        const padding = 30;
+        // Calculate safe boundaries with radius clamp
+        // The button can only move within a circular radius from its original position
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const maxRadius = Math.min(window.innerWidth, window.innerHeight) * 0.3; // 30% of screen size
+        
+        // Calculate random angle and distance within radius
+        const angle = Math.random() * Math.PI * 2;
+        const distance = Math.random() * maxRadius;
+        
+        // Calculate new position
+        let randomX = centerX + Math.cos(angle) * distance;
+        let randomY = centerY + Math.sin(angle) * distance;
+        
+        // Ensure button stays within viewport with padding
+        const padding = 20;
         const maxX = window.innerWidth - btnWidth - padding;
+        const minX = padding;
         const maxY = window.innerHeight - btnHeight - padding;
-
-        const randomX = Math.max(padding, Math.random() * maxX);
-        const randomY = Math.max(padding, Math.random() * maxY);
-
+        const minY = padding;
+        
+        // Clamp to screen bounds
+        randomX = Math.max(minX, Math.min(maxX, randomX));
+        randomY = Math.max(minY, Math.min(maxY, randomY));
+        
         // Apply Fixed Position
         noBtn.style.position = 'fixed';
         noBtn.style.left = `${randomX}px`;
@@ -151,6 +174,9 @@ function setupNoButton() {
         // Random Text
         noBtn.innerText = noTexts[Math.floor(Math.random() * noTexts.length)];
         noBtn.style.transform = `rotate(${Math.random() * 8 - 4}deg)`;
+        
+        // Add slight scale animation
+        noBtn.style.transform += ` scale(${0.95 + Math.random() * 0.1})`;
     }
 
     // Add listeners
@@ -162,6 +188,11 @@ function setupNoButton() {
     noBtn.addEventListener('click', (e) => {
         e.preventDefault();
         moveNoButton();
+        
+        // Add haptic feedback if available
+        if (navigator.vibrate) {
+            navigator.vibrate(30);
+        }
     });
 }
 

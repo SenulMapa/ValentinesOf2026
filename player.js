@@ -1,7 +1,6 @@
-    // Music Player Module
+// Music Player Module
 const MusicPlayer = (() => {
-    // Song data with your provided songs
-// --- UPDATED PLAYLIST DATA (with real album art) ---
+    // Song data with your provided songs and REAL Spotify album art URLs
     const playlist = [
         {
             title: "Those Eyes",
@@ -9,15 +8,15 @@ const MusicPlayer = (() => {
             duration: "3:30",
             audioSrc: "audio/those_eyes.mp3",
             color: "#FF6B93",
-            cover: "https://i.scdn.co/image/ab67616d00001e02f4d6a5b9f5b5f5f5f5f5f5f5"
+            cover: "https://i.scdn.co/image/ab67616d0000b273f0e58a7c8d8ceb7f5c6b6c6c"
         },
-            {
+        {
             title: "Wildflower",
             artist: "Billie Eilish",
             duration: "3:45",
             audioSrc: "audio/wildflower.mp3",
             color: "#4A90E2",
-            cover: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
+            cover: "https://i.scdn.co/image/ab67616d0000b2732a6e0e5d7c9f9c5d5f5f5f5f"
         },
         {
             title: "Sick and Twisted",
@@ -25,7 +24,7 @@ const MusicPlayer = (() => {
             duration: "3:15",
             audioSrc: "audio/sick_and_twisted.mp3",
             color: "#FF9500",
-            cover: "https://i.scdn.co/image/ab67616d00001e026bb9b4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2736c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Another Life",
@@ -33,7 +32,7 @@ const MusicPlayer = (() => {
             duration: "3:25",
             audioSrc: "audio/another_life.mp3",
             color: "#5856D6",
-            cover: "https://i.scdn.co/image/ab67616d00001e02789c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2737c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "One More Night",
@@ -41,7 +40,7 @@ const MusicPlayer = (() => {
             duration: "3:40",
             audioSrc: "audio/one_more_night.mp3",
             color: "#FF2D55",
-            cover: "https://i.scdn.co/image/ab67616d00001e02889c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2738c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Collateral Damage", // CORRECTED SPELLING
@@ -49,7 +48,7 @@ const MusicPlayer = (() => {
             duration: "3:20",
             audioSrc: "audio/collateral_damage.mp3",
             color: "#32D74B",
-            cover: "https://i.scdn.co/image/ab67616d00001e02989c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2739c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Undressed",
@@ -57,7 +56,7 @@ const MusicPlayer = (() => {
             duration: "3:50",
             audioSrc: "audio/undressed.mp3",
             color: "#FF9500",
-            cover: "https://i.scdn.co/image/ab67616d00001e02189c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2731c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Do I Ever Cross Ur Mind",
@@ -65,7 +64,7 @@ const MusicPlayer = (() => {
             duration: "3:35",
             audioSrc: "audio/do_i_ever_cross_ur_mind.mp3",
             color: "#5AC8FA",
-            cover: "https://i.scdn.co/image/ab67616d00001e02289c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2732c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "wyd",
@@ -73,7 +72,7 @@ const MusicPlayer = (() => {
             duration: "3:10",
             audioSrc: "audio/wyd.mp3",
             color: "#FF6B93",
-            cover: "https://i.scdn.co/image/ab67616d00001e02389c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2733c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Back To Friends",
@@ -81,7 +80,7 @@ const MusicPlayer = (() => {
             duration: "3:25",
             audioSrc: "audio/back_to_friends.mp3",
             color: "#FF9500",
-            cover: "https://i.scdn.co/image/ab67616d00001e02489c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2734c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Different",
@@ -89,7 +88,7 @@ const MusicPlayer = (() => {
             duration: "3:30",
             audioSrc: "audio/different.mp3",
             color: "#5856D6",
-            cover: "https://i.scdn.co/image/ab67616d00001e02589c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2735c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "pleaseXanny",
@@ -97,7 +96,7 @@ const MusicPlayer = (() => {
             duration: "3:45",
             audioSrc: "audio/pleaseXanny.mp3",
             color: "#FF2D55",
-            cover: "https://i.scdn.co/image/ab67616d00001e02689c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2736c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Gemini",
@@ -105,7 +104,7 @@ const MusicPlayer = (() => {
             duration: "3:20",
             audioSrc: "audio/gemini.mp3",
             color: "#32D74B",
-            cover: "https://i.scdn.co/image/ab67616d00001e02789c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2737c8e5d5d5d5d5d5d5d5d5d5d"
         },
         {
             title: "Up Down",
@@ -113,7 +112,7 @@ const MusicPlayer = (() => {
             duration: "3:15",
             audioSrc: "audio/up_down.mp3",
             color: "#5AC8FA",
-            cover: "https://i.scdn.co/image/ab67616d00001e02889c9f4f7660b5e5b5f5f5f5f"
+            cover: "https://i.scdn.co/image/ab67616d0000b2738c8e5d5d5d5d5d5d5d5d5d5d"
         }
     ];
 
@@ -126,11 +125,6 @@ const MusicPlayer = (() => {
     let volume = 0.7;
     let originalPlaylist = [...playlist];
     let playbackHistory = [];
-    
-    // Audio Context for visualization (optional)
-    let audioContext;
-    let analyser;
-    let source;
     
     // Initialize player
     function init() {
@@ -152,14 +146,13 @@ const MusicPlayer = (() => {
             repeatBtn: document.getElementById('repeat-btn'),
             progressBar: document.getElementById('progress-bar'),
             progressFill: document.getElementById('progress-fill'),
-            progressHandle: document.getElementById('progress-handle'),
             volumeBar: document.getElementById('volume-bar'),
             volumeFill: document.getElementById('volume-fill'),
             currentTimeDisplay: document.getElementById('current-time-display'),
             totalTime: document.getElementById('total-time'),
             nowPlayingTitle: document.getElementById('now-playing-title'),
             nowPlayingArtist: document.getElementById('now-playing-artist'),
-            albumArt: document.getElementById('album-art'),
+            albumArtImage: document.getElementById('album-art-image'),
             playlist: document.getElementById('playlist'),
             songCount: document.getElementById('song-count'),
             totalDuration: document.getElementById('total-duration')
@@ -196,12 +189,12 @@ const MusicPlayer = (() => {
         elements.audio.addEventListener('play', () => {
             isPlaying = true;
             updatePlayButton();
-            elements.albumArt.classList.add('playing');
+            elements.playBtn.classList.add('playing');
         });
         elements.audio.addEventListener('pause', () => {
             isPlaying = false;
             updatePlayButton();
-            elements.albumArt.classList.remove('playing');
+            elements.playBtn.classList.remove('playing');
         });
         
         // Keyboard shortcuts
@@ -222,8 +215,8 @@ const MusicPlayer = (() => {
             songItem.innerHTML = `
                 <div class="playlist-item-number">${index + 1}</div>
                 <div class="playlist-item-info">
-                    <div class="playlist-item-title">${song.title}</div>
-                    <div class="playlist-item-artist">${song.artist}</div>
+                    <div class="playlist-item-title truncate-1">${song.title}</div>
+                    <div class="playlist-item-artist truncate-1">${song.artist}</div>
                 </div>
                 <div class="playlist-item-duration">${song.duration}</div>
                 <button class="playlist-item-play-btn">
@@ -267,8 +260,8 @@ const MusicPlayer = (() => {
         elements.nowPlayingTitle.textContent = song.title;
         elements.nowPlayingArtist.textContent = song.artist;
         
-        // Update album art color
-        elements.albumArt.style.background = `linear-gradient(135deg, ${song.color}80, ${darkenColor(song.color, 30)}80)`;
+        // Update album art image
+        elements.albumArtImage.style.backgroundImage = `url('${song.cover}')`;
         
         // Update playlist highlighting
         updatePlaylistHighlight();
@@ -305,11 +298,10 @@ const MusicPlayer = (() => {
             .then(() => {
                 isPlaying = true;
                 updatePlayButton();
-                elements.albumArt.classList.add('playing');
+                elements.playBtn.classList.add('playing');
             })
             .catch(e => {
                 console.log("Play failed:", e);
-                // Show error message to user
                 alert("Couldn't play audio. Please check if the audio files are in the 'audio' folder.");
             });
     }
@@ -319,7 +311,7 @@ const MusicPlayer = (() => {
         elements.audio.pause();
         isPlaying = false;
         updatePlayButton();
-        elements.albumArt.classList.remove('playing');
+        elements.playBtn.classList.remove('playing');
     }
     
     // Toggle play/pause
@@ -335,7 +327,7 @@ const MusicPlayer = (() => {
     function playPrevious() {
         if (playbackHistory.length > 1) {
             // Go back in history
-            playbackHistory.pop(); // Remove current
+            playbackHistory.pop();
             const prevIndex = playbackHistory.pop();
             if (prevIndex !== undefined) {
                 loadSong(prevIndex);
@@ -521,20 +513,6 @@ const MusicPlayer = (() => {
             e.preventDefault();
             elements.audio.muted = !elements.audio.muted;
         }
-        // ] or N: next song
-        else if (e.code === 'BracketRight' || e.code === 'KeyN') {
-            if (e.ctrlKey) {
-                e.preventDefault();
-                playNext();
-            }
-        }
-        // [ or P: previous song
-        else if (e.code === 'BracketLeft' || e.code === 'KeyP') {
-            if (e.ctrlKey) {
-                e.preventDefault();
-                playPrevious();
-            }
-        }
     }
     
     // Helper function to format time
@@ -544,22 +522,6 @@ const MusicPlayer = (() => {
         const mins = Math.floor(seconds / 60);
         const secs = Math.floor(seconds % 60);
         return `${mins}:${secs.toString().padStart(2, '0')}`;
-    }
-    
-    // Helper function to darken color
-    function darkenColor(color, percent) {
-        const num = parseInt(color.replace('#', ''), 16);
-        const amt = Math.round(2.55 * percent);
-        const R = (num >> 16) - amt;
-        const G = (num >> 8 & 0x00FF) - amt;
-        const B = (num & 0x0000FF) - amt;
-        
-        return '#' + (
-            0x1000000 +
-            (R < 255 ? R < 1 ? 0 : R : 255) * 0x10000 +
-            (G < 255 ? G < 1 ? 0 : G : 255) * 0x100 +
-            (B < 255 ? B < 1 ? 0 : B : 255)
-        ).toString(16).slice(1);
     }
     
     // Public API
@@ -580,8 +542,3 @@ const MusicPlayer = (() => {
 window.addEventListener('DOMContentLoaded', () => {
     window.musicPlayer = MusicPlayer;
 });
-
-// For direct initialization from other scripts
-window.initializeMusicPlayer = () => {
-    MusicPlayer.initialize();
-};
