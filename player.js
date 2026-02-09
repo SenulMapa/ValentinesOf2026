@@ -6,98 +6,98 @@ const MusicPlayer = (() => {
             title: "Those Eyes",
             artist: "New West",
             duration: "3:32",
-            audioSrc: "audio/those_eyes.mp3",
+            audioSrc: "Audio/those_eyes.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273f0e58a7c8d8ceb7f5c6b6c6c"
         },
         {
             title: "Wildflower",
             artist: "Billie Eilish",
             duration: "3:04",
-            audioSrc: "audio/wildflower.mp3",
+            audioSrc: "Audio/wildflower.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273ff9ca10b55ce82ae553c8228"
         },
         {
             title: "Sick and Twisted",
             artist: "Chris Grey",
             duration: "3:15",
-            audioSrc: "audio/sick_and_twisted.mp3",
+            audioSrc: "Audio/sick_and_twisted.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b2736bb9b4f7660b5e5b5f5f5f5f5"
         },
         {
             title: "Another Life",
             artist: "Chris Grey",
             duration: "3:25",
-            audioSrc: "audio/another_life.mp3",
+            audioSrc: "Audio/another_life.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273789c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "One More Night",
             artist: "Chris Grey",
             duration: "3:40",
-            audioSrc: "audio/one_more_night.mp3",
+            audioSrc: "Audio/one_more_night.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273889c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Collateral Damage",
             artist: "Chris Grey",
             duration: "3:20",
-            audioSrc: "audio/collateral_damage.mp3",
+            audioSrc: "Audio/collateral_damage.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273989c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Undressed",
             artist: "Sombr",
             duration: "3:50",
-            audioSrc: "audio/undressed.mp3",
+            audioSrc: "Audio/undressed.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273189c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Do I Ever Cross Ur Mind",
             artist: "Sombr",
             duration: "3:35",
-            audioSrc: "audio/do_i_ever_cross_ur_mind.mp3",
+            audioSrc: "Audio/do_i_ever_cross_ur_mind.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273289c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "wyd",
             artist: "Sadie Jean",
             duration: "3:10",
-            audioSrc: "audio/wyd.mp3",
+            audioSrc: "Audio/wyd.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273389c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Back To Friends",
             artist: "Sombr",
             duration: "3:25",
-            audioSrc: "audio/back_to_friends.mp3",
+            audioSrc: "Audio/back_to_friends.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273489c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Different",
             artist: "Chris Grey",
             duration: "3:30",
-            audioSrc: "audio/different.mp3",
+            audioSrc: "Audio/different.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273589c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "pleaseXanny",
             artist: "Chase Atlantic",
             duration: "3:45",
-            audioSrc: "audio/pleaseXanny.mp3",
+            audioSrc: "Audio/pleaseXanny.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273689c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Gemini",
             artist: "Chris Grey",
             duration: "3:20",
-            audioSrc: "audio/gemini.mp3",
+            audioSrc: "Audio/gemini.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273789c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Up Down",
             artist: "Dyce",
             duration: "3:15",
-            audioSrc: "audio/up_down.mp3",
+            audioSrc: "Audio/up_down.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273889c9f4f7660b5e5b5f5f5f5f"
         }
     ];
