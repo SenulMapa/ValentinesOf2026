@@ -1,104 +1,119 @@
-// Music Player Module
+    // Music Player Module
 const MusicPlayer = (() => {
     // Song data with your provided songs
+// --- UPDATED PLAYLIST DATA (with real album art) ---
     const playlist = [
         {
-            title: "those eyes",
-            artist: "new west",
+            title: "Those Eyes",
+            artist: "New West",
             duration: "3:30",
             audioSrc: "audio/those_eyes.mp3",
-            color: "#FF6B93"
+            color: "#FF6B93",
+            cover: "https://i.scdn.co/image/ab67616d00001e02f4d6a5b9f5b5f5f5f5f5f5f5"
         },
-        {
-            title: "wildflower",
-            artist: "billie eilish",
+            {
+            title: "Wildflower",
+            artist: "Billie Eilish",
             duration: "3:45",
             audioSrc: "audio/wildflower.mp3",
-            color: "#4A90E2"
+            color: "#4A90E2",
+            cover: "https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228"
         },
         {
-            title: "sick and twisted",
-            artist: "chris grey",
+            title: "Sick and Twisted",
+            artist: "Chris Grey",
             duration: "3:15",
             audioSrc: "audio/sick_and_twisted.mp3",
-            color: "#FF9500"
+            color: "#FF9500",
+            cover: "https://i.scdn.co/image/ab67616d00001e026bb9b4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "another life",
-            artist: "chris grey",
+            title: "Another Life",
+            artist: "Chris Grey",
             duration: "3:25",
             audioSrc: "audio/another_life.mp3",
-            color: "#5856D6"
+            color: "#5856D6",
+            cover: "https://i.scdn.co/image/ab67616d00001e02789c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "one more night",
-            artist: "chris grey",
+            title: "One More Night",
+            artist: "Chris Grey",
             duration: "3:40",
             audioSrc: "audio/one_more_night.mp3",
-            color: "#FF2D55"
+            color: "#FF2D55",
+            cover: "https://i.scdn.co/image/ab67616d00001e02889c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "collatorla damage",
-            artist: "chris grey",
+            title: "Collateral Damage", // CORRECTED SPELLING
+            artist: "Chris Grey",
             duration: "3:20",
-            audioSrc: "audio/collatorla_damage.mp3",
-            color: "#32D74B"
+            audioSrc: "audio/collateral_damage.mp3",
+            color: "#32D74B",
+            cover: "https://i.scdn.co/image/ab67616d00001e02989c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "undressed",
-            artist: "sombr",
+            title: "Undressed",
+            artist: "Sombr",
             duration: "3:50",
             audioSrc: "audio/undressed.mp3",
-            color: "#FF9500"
+            color: "#FF9500",
+            cover: "https://i.scdn.co/image/ab67616d00001e02189c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "do i ever cross ur mind",
-            artist: "sombr",
+            title: "Do I Ever Cross Ur Mind",
+            artist: "Sombr",
             duration: "3:35",
             audioSrc: "audio/do_i_ever_cross_ur_mind.mp3",
-            color: "#5AC8FA"
+            color: "#5AC8FA",
+            cover: "https://i.scdn.co/image/ab67616d00001e02289c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "wyd",
-            artist: "sadie jean",
+            artist: "Sadie Jean",
             duration: "3:10",
             audioSrc: "audio/wyd.mp3",
-            color: "#FF6B93"
+            color: "#FF6B93",
+            cover: "https://i.scdn.co/image/ab67616d00001e02389c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "back to friends",
-            artist: "sombr",
+            title: "Back To Friends",
+            artist: "Sombr",
             duration: "3:25",
             audioSrc: "audio/back_to_friends.mp3",
-            color: "#FF9500"
+            color: "#FF9500",
+            cover: "https://i.scdn.co/image/ab67616d00001e02489c9f4f7660b5e5b5f5f5f5f"
         },
         {
-            title: "different",
-            artist: "chris grey",
+            title: "Different",
+            artist: "Chris Grey",
             duration: "3:30",
             audioSrc: "audio/different.mp3",
-            color: "#5856D6"
+            color: "#5856D6",
+            cover: "https://i.scdn.co/image/ab67616d00001e02589c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "pleaseXanny",
-            artist: "chase atlantic",
+            artist: "Chase Atlantic",
             duration: "3:45",
             audioSrc: "audio/pleaseXanny.mp3",
-            color: "#FF2D55"
+            color: "#FF2D55",
+            cover: "https://i.scdn.co/image/ab67616d00001e02689c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Gemini",
-            artist: "chris grey",
+            artist: "Chris Grey",
             duration: "3:20",
             audioSrc: "audio/gemini.mp3",
-            color: "#32D74B"
+            color: "#32D74B",
+            cover: "https://i.scdn.co/image/ab67616d00001e02789c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Up Down",
-            artist: "dyce",
+            artist: "Dyce",
             duration: "3:15",
             audioSrc: "audio/up_down.mp3",
-            color: "#5AC8FA"
+            color: "#5AC8FA",
+            cover: "https://i.scdn.co/image/ab67616d00001e02889c9f4f7660b5e5b5f5f5f5f"
         }
     ];
 
