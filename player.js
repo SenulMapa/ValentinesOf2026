@@ -1,103 +1,103 @@
 // Music Player Module with Album Art Handling
 const MusicPlayer = (() => {
-    // Song data with YouTube links as fallback
+    // Song data with local audio files
     const playlist = [
         {
             title: "Those Eyes",
             artist: "New West",
             duration: "3:32",
-            audioSrc: "https://www.youtube.com/watch?v=0lNyyB5mipw", // YouTube link as fallback
+            audioSrc: "audio/those_eyes.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273f0e58a7c8d8ceb7f5c6b6c6c"
         },
         {
             title: "Wildflower",
             artist: "Billie Eilish",
             duration: "3:04",
-            audioSrc: "https://www.youtube.com/watch?v=RxrvNrQ2E8Q",
+            audioSrc: "audio/wildflower.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273ff9ca10b55ce82ae553c8228"
         },
         {
             title: "Sick and Twisted",
             artist: "Chris Grey",
             duration: "3:15",
-            audioSrc: "https://www.youtube.com/watch?v=QrR_gm6RqCo",
+            audioSrc: "audio/sick_and_twisted.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b2736bb9b4f7660b5e5b5f5f5f5f5"
         },
         {
             title: "Another Life",
             artist: "Chris Grey",
             duration: "3:25",
-            audioSrc: "https://www.youtube.com/watch?v=sRkMp6u4Wn4",
+            audioSrc: "audio/another_life.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273789c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "One More Night",
             artist: "Chris Grey",
             duration: "3:40",
-            audioSrc: "https://www.youtube.com/watch?v=Xylr1VFO7Vg",
+            audioSrc: "audio/one_more_night.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273889c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Collateral Damage",
             artist: "Chris Grey",
             duration: "3:20",
-            audioSrc: "https://www.youtube.com/watch?v=AvSSs8CwlpA",
+            audioSrc: "audio/collateral_damage.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273989c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Undressed",
             artist: "Sombr",
             duration: "3:50",
-            audioSrc: "https://www.youtube.com/watch?v=DJmU-Q0hqBw",
+            audioSrc: "audio/undressed.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273189c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Do I Ever Cross Ur Mind",
             artist: "Sombr",
             duration: "3:35",
-            audioSrc: "https://www.youtube.com/watch?v=MD3WljYj9PI",
+            audioSrc: "audio/do_i_ever_cross_ur_mind.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273289c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "wyd",
             artist: "Sadie Jean",
             duration: "3:10",
-            audioSrc: "https://www.youtube.com/watch?v=alqjkdLln4I",
+            audioSrc: "audio/wyd.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273389c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Back To Friends",
             artist: "Sombr",
             duration: "3:25",
-            audioSrc: "https://www.youtube.com/watch?v=Qe9o8ArYYik",
+            audioSrc: "audio/back_to_friends.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273489c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Different",
             artist: "Chris Grey",
             duration: "3:30",
-            audioSrc: "https://www.youtube.com/watch?v=KBp2qn8Wj7I",
+            audioSrc: "audio/different.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273589c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "pleaseXanny",
             artist: "Chase Atlantic",
             duration: "3:45",
-            audioSrc: "https://www.youtube.com/watch?v=SKClbO6R8vU",
+            audioSrc: "audio/pleaseXanny.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273689c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Gemini",
             artist: "Chris Grey",
             duration: "3:20",
-            audioSrc: "https://www.youtube.com/watch?v=lQglm4T5psQ",
+            audioSrc: "audio/gemini.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273789c9f4f7660b5e5b5f5f5f5f"
         },
         {
             title: "Up Down",
             artist: "Dyce",
             duration: "3:15",
-            audioSrc: "https://www.youtube.com/watch?v=KcjF-sVgps8",
+            audioSrc: "audio/up_down.mp3",
             cover: "https://i.scdn.co/image/ab67616d0000b273889c9f4f7660b5e5b5f5f5f5f"
         }
     ];
@@ -110,7 +110,6 @@ const MusicPlayer = (() => {
     let isRepeating = false;
     let volume = 0.7;
     let vinylInterval = null;
-    let useFallbackMode = false; // Flag to use YouTube fallback
 
     // Initialize player
     function init() {
@@ -119,11 +118,10 @@ const MusicPlayer = (() => {
         createVinylEffect();
         setupMobileLayout();
         
-        // Start with a working song (Wildflower has more reliable sources)
-        currentSongIndex = 1; // Wildflower index
+        // Start with first song
         loadSong(currentSongIndex);
         
-        console.log("🎵 Music Player Initialized - Using YouTube Fallbacks");
+        console.log("🎵 Music Player Initialized");
     }
 
     // Cache DOM elements
@@ -183,6 +181,7 @@ const MusicPlayer = (() => {
         elements.audio.addEventListener('play', onPlay);
         elements.audio.addEventListener('pause', onPause);
         elements.audio.addEventListener('error', onAudioError);
+        elements.audio.addEventListener('loadeddata', onAudioLoaded);
         
         // Keyboard shortcuts
         document.addEventListener('keydown', handleKeydown);
@@ -303,11 +302,6 @@ const MusicPlayer = (() => {
         elements.albumArt.classList.add('playing');
         elements.playBtn.classList.add('playing');
         startVinylRotation();
-        
-        // Update header time
-        if (elements.audio.duration && !isNaN(elements.audio.duration)) {
-            elements.headerTime.textContent = formatTime(elements.audio.currentTime);
-        }
     }
 
     function onPause() {
@@ -318,15 +312,22 @@ const MusicPlayer = (() => {
         stopVinylRotation();
     }
 
+    function onAudioLoaded() {
+        // Show album art when audio loads
+        const song = playlist[currentSongIndex];
+        if (song) {
+            showAlbumArt(song);
+        }
+    }
+
     function onAudioError(e) {
-        console.log("Audio error - switching to fallback mode");
-        useFallbackMode = true;
+        console.log("Audio error for:", playlist[currentSongIndex]?.title);
         
         const song = playlist[currentSongIndex];
         if (song) {
-            // Show song info but disable audio
+            // Still show song info
             elements.nowPlayingTitle.textContent = song.title;
-            elements.nowPlayingArtist.textContent = song.artist + " (Tap to listen on YouTube)";
+            elements.nowPlayingArtist.textContent = song.artist;
             elements.totalTime.textContent = song.duration;
             
             // Update vinyl label
@@ -336,22 +337,8 @@ const MusicPlayer = (() => {
             showAlbumArt(song);
         }
         
-        // Disable play button since audio won't work
-        elements.playBtn.style.opacity = '0.5';
-        elements.playBtn.style.cursor = 'not-allowed';
-        
-        // Make album art clickable for YouTube
-        elements.albumArt.style.cursor = 'pointer';
-        elements.albumArt.title = 'Click to listen on YouTube';
-        elements.albumArt.addEventListener('click', openYouTubeLink);
-    }
-
-    // Open YouTube link
-    function openYouTubeLink() {
-        const song = playlist[currentSongIndex];
-        if (song && song.audioSrc && song.audioSrc.includes('youtube.com')) {
-            window.open(song.audioSrc, '_blank');
-        }
+        // Remove loading state
+        elements.albumArt.classList.remove('loading');
     }
 
     // Show album art
@@ -364,19 +351,18 @@ const MusicPlayer = (() => {
             elements.albumArtImage.src = song.cover;
             elements.albumArtImage.style.display = 'block';
             elements.albumArtImage.onerror = () => {
-                showDefaultAlbumArt();
+                showDefaultAlbumArt(song);
             };
         } else {
-            showDefaultAlbumArt();
+            showDefaultAlbumArt(song);
         }
     }
 
     // Show default album art (gradient)
-    function showDefaultAlbumArt() {
-        elements.albumArtImage.style.display = 'none';
-        
-        const song = playlist[currentSongIndex];
+    function showDefaultAlbumArt(song) {
         if (!song) return;
+        
+        elements.albumArtImage.style.display = 'none';
         
         // Create a unique gradient based on song title
         const hash = song.title.split('').reduce((a, b) => {
@@ -403,9 +389,20 @@ const MusicPlayer = (() => {
         
         console.log(`Loading: ${song.title} by ${song.artist}`);
         
+        // Stop current playback
+        if (isPlaying) {
+            pause();
+        }
+        
         // Update UI
         elements.nowPlayingTitle.textContent = song.title;
         elements.nowPlayingArtist.textContent = song.artist;
+        elements.totalTime.textContent = song.duration;
+        
+        // Reset progress
+        elements.progressFill.style.width = '0%';
+        elements.currentTime.textContent = '0:00';
+        elements.headerTime.textContent = '0:00';
         
         // Update vinyl
         updateVinylLabel();
@@ -415,39 +412,16 @@ const MusicPlayer = (() => {
         elements.albumArt.style.background = 'linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%)';
         elements.albumArtImage.style.display = 'none';
         
-        // Try to play audio (will fail if files don't exist, handled by onAudioError)
-        if (!useFallbackMode) {
-            elements.audio.src = `audio/${song.title.toLowerCase().replace(/\s+/g, '_')}.mp3`;
-            elements.audio.load();
-            
-            // Reset play button
-            elements.playBtn.style.opacity = '1';
-            elements.playBtn.style.cursor = 'pointer';
-            elements.albumArt.style.cursor = 'default';
-            elements.albumArt.removeEventListener('click', openYouTubeLink);
-        } else {
-            // We're in fallback mode, just show the song info
-            elements.nowPlayingArtist.textContent = song.artist + " (Tap album to listen)";
-            elements.totalTime.textContent = song.duration;
-            showAlbumArt(song);
-            
-            // Make album art clickable
-            elements.albumArt.style.cursor = 'pointer';
-            elements.albumArt.title = 'Click to listen on YouTube';
-            elements.albumArt.addEventListener('click', openYouTubeLink);
-        }
+        // Try to load audio
+        elements.audio.src = song.audioSrc;
+        elements.audio.load();
+        
+        // Reset play button state
+        updatePlayButton();
     }
 
     // Play song
     function playSong(index) {
-        if (useFallbackMode) {
-            // In fallback mode, just load the song info
-            loadSong(index);
-            const song = playlist[index];
-            alert(`🎵 ${song.title} by ${song.artist}\n\nSince audio files aren't available, you can listen to this song on YouTube by tapping the album art!`);
-            return;
-        }
-        
         if (index === currentSongIndex && isPlaying) {
             pause();
         } else {
@@ -460,11 +434,6 @@ const MusicPlayer = (() => {
 
     // Play audio
     function play() {
-        if (useFallbackMode) {
-            alert("🎵 Audio files aren't available locally.\n\nTap the album art to listen on YouTube instead!");
-            return;
-        }
-        
         const playPromise = elements.audio.play();
         
         if (playPromise !== undefined) {
@@ -473,14 +442,14 @@ const MusicPlayer = (() => {
                     console.log("▶️ Playback started");
                 })
                 .catch(e => {
-                    console.log("Play failed, switching to fallback mode:", e);
-                    useFallbackMode = true;
-                    onAudioError(e);
+                    console.log("Play failed:", e);
+                    isPlaying = false;
+                    updatePlayButton();
                     
-                    // Show user-friendly message
+                    // Show error message to user
                     const song = playlist[currentSongIndex];
                     if (song) {
-                        alert(`🎵 Can't play "${song.title}" locally\n\nTap the album art to listen on YouTube!`);
+                        alert(`Cannot play "${song.title}"\n\nMake sure the audio file exists at:\n${song.audioSrc}`);
                     }
                 });
         }
@@ -488,21 +457,11 @@ const MusicPlayer = (() => {
 
     // Pause audio
     function pause() {
-        if (!useFallbackMode) {
-            elements.audio.pause();
-        }
+        elements.audio.pause();
     }
 
     // Toggle play/pause
     function togglePlay() {
-        if (useFallbackMode) {
-            const song = playlist[currentSongIndex];
-            if (song) {
-                alert(`🎵 ${song.title} by ${song.artist}\n\nTap the album art to listen on YouTube!`);
-            }
-            return;
-        }
-        
         if (isPlaying) {
             pause();
         } else {
@@ -514,7 +473,7 @@ const MusicPlayer = (() => {
     function playPrevious() {
         const newIndex = (currentSongIndex - 1 + playlist.length) % playlist.length;
         loadSong(newIndex);
-        if (isPlaying && !useFallbackMode) {
+        if (isPlaying) {
             play();
         }
     }
@@ -533,7 +492,7 @@ const MusicPlayer = (() => {
             loadSong(newIndex);
         }
         
-        if (isPlaying && !useFallbackMode) {
+        if (isPlaying) {
             play();
         }
     }
@@ -552,7 +511,7 @@ const MusicPlayer = (() => {
 
     // Handle song end
     function handleSongEnd() {
-        if (isRepeating && !useFallbackMode) {
+        if (isRepeating) {
             elements.audio.currentTime = 0;
             play();
         } else {
@@ -562,8 +521,6 @@ const MusicPlayer = (() => {
 
     // Seek in audio
     function seek(e) {
-        if (useFallbackMode) return;
-        
         const rect = elements.progressBar.getBoundingClientRect();
         const percent = (e.clientX - rect.left) / rect.width;
         const newTime = percent * elements.audio.duration;
@@ -576,8 +533,6 @@ const MusicPlayer = (() => {
 
     // Set volume
     function setVolume(e) {
-        if (useFallbackMode) return;
-        
         const rect = elements.volumeBar.getBoundingClientRect();
         volume = (e.clientX - rect.left) / rect.width;
         volume = Math.max(0, Math.min(1, volume));
@@ -588,22 +543,7 @@ const MusicPlayer = (() => {
 
     // Update progress bar
     function updateProgress() {
-        if (useFallbackMode || !elements.audio.duration || isNaN(elements.audio.duration)) {
-            // Simulate progress in fallback mode
-            if (useFallbackMode && isPlaying) {
-                const song = playlist[currentSongIndex];
-                if (song) {
-                    const [min, sec] = song.duration.split(':').map(Number);
-                    const totalSec = min * 60 + sec;
-                    const elapsed = Math.min(totalSec, (Date.now() / 1000) % totalSec);
-                    const percent = (elapsed / totalSec) * 100;
-                    elements.progressFill.style.width = `${percent}%`;
-                    elements.currentTime.textContent = formatTime(elapsed);
-                    elements.headerTime.textContent = formatTime(elapsed);
-                }
-            }
-            return;
-        }
+        if (!elements.audio.duration || isNaN(elements.audio.duration)) return;
         
         const percent = (elements.audio.currentTime / elements.audio.duration) * 100;
         elements.progressFill.style.width = `${percent}%`;
@@ -615,7 +555,7 @@ const MusicPlayer = (() => {
 
     // Update total time display
     function updateTotalTime() {
-        if (!useFallbackMode && elements.audio.duration && !isNaN(elements.audio.duration)) {
+        if (elements.audio.duration && !isNaN(elements.audio.duration)) {
             elements.totalTime.textContent = formatTime(elements.audio.duration);
         } else {
             const currentSong = playlist[currentSongIndex];
@@ -649,6 +589,18 @@ const MusicPlayer = (() => {
                 vinylDisc.style.width = `${newSize + 40}px`;
                 vinylDisc.style.height = `${newSize + 40}px`;
             }
+        } else {
+            // Portrait mode
+            if (screenHeight < 700) {
+                elements.albumArtWrapper.style.width = '220px';
+                elements.albumArtWrapper.style.height = '220px';
+                
+                const vinylDisc = document.querySelector('.vinyl-disc');
+                if (vinylDisc) {
+                    vinylDisc.style.width = '260px';
+                    vinylDisc.style.height = '260px';
+                }
+            }
         }
     }
 
@@ -679,6 +631,11 @@ const MusicPlayer = (() => {
             e.preventDefault();
             toggleRepeat();
         }
+        // M: mute
+        else if (e.code === 'KeyM') {
+            e.preventDefault();
+            elements.audio.muted = !elements.audio.muted;
+        }
     }
 
     // Helper function to format time
@@ -700,8 +657,7 @@ const MusicPlayer = (() => {
         playNext: playNext,
         playPrevious: playPrevious,
         currentSong: () => playlist[currentSongIndex],
-        isPlaying: () => isPlaying,
-        isFallbackMode: () => useFallbackMode
+        isPlaying: () => isPlaying
     };
 })();
 
