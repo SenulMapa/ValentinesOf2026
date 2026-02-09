@@ -68,90 +68,82 @@
             </div>
         </section>
 
-        <!-- Screen 5: Music Player -->
+        <!-- Screen 5: Music Player (Redesigned) -->
         <section id="screen-music" class="screen hidden">
-            <div class="music-container">
-                <!-- Header -->
-                <div class="music-header">
-                    <button class="back-btn" onclick="goBackFromMusic()">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <div class="header-content">
-                        <h2>Our Mix</h2>
-                        <p>Made with 💕 for you</p>
-                    </div>
-                    <div class="header-actions">
-                        <span id="current-time">0:00</span>
-                    </div>
+            <!-- Fixed Player Header -->
+            <div class="player-header">
+                <button class="back-btn" onclick="goBackFromMusic()">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <div class="header-info">
+                    <h3>Our Mix</h3>
+                    <p>Made with love 💕</p>
                 </div>
+                <div class="header-time" id="header-time">0:00</div>
+            </div>
 
-                <!-- Now Playing -->
-                <div class="now-playing-section" id="now-playing-section">
-                    <div class="album-art-container">
+            <!-- Main Player Content -->
+            <div class="player-main">
+                <!-- Album Art with Gradient Overlay -->
+                <div class="album-art-container">
+                    <div class="album-art-wrapper">
                         <div class="album-art" id="album-art">
-                            <div class="album-art-image" id="album-art-image"></div>
+                            <img id="album-art-image" src="" alt="Album Art" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎵</text></svg>';">
+                            <div class="album-art-overlay"></div>
                         </div>
-                        <div class="song-info-large">
-                            <h3 id="now-playing-title" class="truncate-2">Select a song</h3>
-                            <p id="now-playing-artist" class="truncate-1">—</p>
-                        </div>
-                    </div>
-
-                    <!-- Progress Bar -->
-                    <div class="progress-container">
-                        <div class="progress-bar" id="progress-bar">
-                            <div class="progress-fill" id="progress-fill"></div>
-                        </div>
-                        <div class="time-display">
-                            <span id="current-time-display">0:00</span>
-                            <span id="total-time">0:00</span>
-                        </div>
-                    </div>
-
-                    <!-- Controls -->
-                    <div class="player-controls">
-                        <button class="control-btn" id="shuffle-btn">
-                            <i class="fas fa-random"></i>
-                        </button>
-                        <button class="control-btn" id="prev-btn">
-                            <i class="fas fa-step-backward"></i>
-                        </button>
-                        <button class="control-btn play-btn" id="play-btn">
-                            <i class="fas fa-play"></i>
-                        </button>
-                        <button class="control-btn" id="next-btn">
-                            <i class="fas fa-step-forward"></i>
-                        </button>
-                        <button class="control-btn" id="repeat-btn">
-                            <i class="fas fa-redo"></i>
-                        </button>
-                    </div>
-
-                    <!-- Volume -->
-                    <div class="volume-control">
-                        <i class="fas fa-volume-down volume-icon"></i>
-                        <div class="volume-bar" id="volume-bar">
-                            <div class="volume-fill" id="volume-fill"></div>
-                        </div>
-                        <i class="fas fa-volume-up volume-icon"></i>
-                    </div>
-                </div>
-
-                <!-- Playlist -->
-                <div class="playlist-container">
-                    <div class="playlist-header">
-                        <h3>Playlist · <span id="song-count">14</span> songs</h3>
-                        <div class="playlist-stats">
-                            <span id="total-duration">48 min</span>
-                        </div>
+                        <div class="album-art-shadow"></div>
                     </div>
                     
-                    <div class="playlist" id="playlist">
-                        <!-- Songs will be loaded here -->
+                    <!-- Song Info -->
+                    <div class="song-info">
+                        <h2 id="now-playing-title" class="song-title">Select a song</h2>
+                        <p id="now-playing-artist" class="song-artist">Tap a song to play</p>
                     </div>
                 </div>
+
+                <!-- Progress Section -->
+                <div class="progress-section">
+                    <div class="progress-bar" id="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                        <div class="progress-handle" id="progress-handle"></div>
+                    </div>
+                    <div class="time-display">
+                        <span id="current-time">0:00</span>
+                        <span id="total-time">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Player Controls -->
+                <div class="player-controls">
+                    <button class="control-btn secondary-btn" id="shuffle-btn">
+                        <i class="fas fa-random"></i>
+                    </button>
+                    <button class="control-btn" id="prev-btn">
+                        <i class="fas fa-step-backward"></i>
+                    </button>
+                    <button class="control-btn play-btn" id="play-btn">
+                        <i class="fas fa-play"></i>
+                    </button>
+                    <button class="control-btn" id="next-btn">
+                        <i class="fas fa-step-forward"></i>
+                    </button>
+                    <button class="control-btn secondary-btn" id="repeat-btn">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="volume-section">
+                    <i class="fas fa-volume-down"></i>
+                    <div class="volume-bar" id="volume-bar">
+                        <div class="volume-fill" id="volume-fill"></div>
+                    </div>
+                    <i class="fas fa-volume-up"></i>
+                </div>
             </div>
-        </section>
+
+            </div> <!-- Close player-main -->
+        </section> <!-- Close screen-music -->
 
         <!-- Screen 6: Success -->
         <section id="screen-success" class="screen hidden">
