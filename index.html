@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For You 🎀</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@1,400;1,700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎀</text></svg>">
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="bg-elements" id="bg-elements"></div>
+
+    <!-- Main App Container -->
+    <div id="app">
+        <!-- Screen 1: Locked -->
+        <section id="screen-locked" class="screen active-screen">
+            <div class="content-box">
+                <h1>Patience, pretty 🤍</h1>
+                <p>This surprise is locked until the right moment.</p>
+                <div id="timer">00:00:00</div>
+                <p class="sub-text">Come back between 01:10 AM & 01:20 AM</p>
+            </div>
+            <div id="bypass-trigger" onclick="triggerBypass()">🔒</div>
+        </section>
+
+        <!-- Screen 2: Intro -->
+        <section id="screen-intro" class="screen hidden">
+            <div class="content-box">
+                <h1>Hey beautiful... 👀</h1>
+                <p>I made a little something just for you.</p>
+                <button class="btn-primary" onclick="switchScreen('intro', 'proposal')">Continue ✨</button>
+            </div>
+        </section>
+
+        <!-- Screen 3: Proposal -->
+        <section id="screen-proposal" class="screen hidden">
+            <div class="content-box">
+                <h1>Will you be my Valentine? 💌</h1>
+                <div class="button-group">
+                    <button id="btn-yes" class="btn-primary" onclick="handleYes()">Yes! 💖</button>
+                    <button id="btn-no" class="btn-secondary">No 😐</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: Coke Game -->
+        <section id="screen-coke" class="screen hidden">
+            <div class="content-box">
+                <h1>Okay but first... 🥤</h1>
+                <p>Tap the Coke can 7 times to prove you're thirsty for this playlist</p>
+                <div class="coke-can" id="cokeCan">🥤</div>
+                <div class="coke-count" id="cokeCount">0 / 7</div>
+                <div class="coke-progress">
+                    <div class="coke-progress-fill" id="cokeProgress"></div>
+                </div>
+                <p id="cokeMessage">Keep going! Almost there!</p>
+            </div>
+        </section>
+
+        <!-- Screen 5: Music Player -->
+        <section id="screen-music" class="screen hidden">
+            <div class="music-container">
+                <!-- Header -->
+                <div class="music-header">
+                    <button class="back-btn" onclick="goBackFromMusic()">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="header-content">
+                        <h2>Our Mix</h2>
+                        <p>Made with 💕 for you</p>
+                    </div>
+                    <div class="header-actions">
+                        <span id="current-time">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Now Playing -->
+                <div class="now-playing-section" id="now-playing-section">
+                    <div class="album-art-container">
+                        <div class="album-art" id="album-art">
+                            <div class="vinyl-disc"></div>
+                            <div class="record-hole"></div>
+                        </div>
+                        <div class="song-info-large">
+                            <h3 id="now-playing-title">Select a song</h3>
+                            <p id="now-playing-artist">—</p>
+                        </div>
+                    </div>
+
+                    <!-- Progress Bar -->
+                    <div class="progress-container">
+                        <div class="progress-bar" id="progress-bar">
+                            <div class="progress-fill" id="progress-fill"></div>
+                            <div class="progress-handle" id="progress-handle"></div>
+                        </div>
+                        <div class="time-display">
+                            <span id="current-time-display">0:00</span>
+                            <span id="total-time">0:00</span>
+                        </div>
+                    </div>
+
+                    <!-- Controls -->
+                    <div class="player-controls">
+                        <button class="control-btn" id="shuffle-btn">
+                            <i class="fas fa-random"></i>
+                        </button>
+                        <button class="control-btn" id="prev-btn">
+                            <i class="fas fa-step-backward"></i>
+                        </button>
+                        <button class="control-btn play-btn" id="play-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                        <button class="control-btn" id="next-btn">
+                            <i class="fas fa-step-forward"></i>
+                        </button>
+                        <button class="control-btn" id="repeat-btn">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+
+                    <!-- Volume -->
+                    <div class="volume-control">
+                        <i class="fas fa-volume-down volume-icon"></i>
+                        <div class="volume-bar" id="volume-bar">
+                            <div class="volume-fill" id="volume-fill"></div>
+                        </div>
+                        <i class="fas fa-volume-up volume-icon"></i>
+                    </div>
+                </div>
+
+                <!-- Playlist -->
+                <div class="playlist-container">
+                    <div class="playlist-header">
+                        <h3>Playlist · <span id="song-count">14</span> songs</h3>
+                        <div class="playlist-stats">
+                            <span id="total-duration">48 min</span>
+                        </div>
+                    </div>
+                    
+                    <div class="playlist" id="playlist">
+                        <!-- Songs will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 6: Success -->
+        <section id="screen-success" class="screen hidden">
+            <div class="content-box">
+                <h1>LET'S GOOOO 💕</h1>
+                <p>Best. Answer. Ever.</p>
+                <p>Can't wait to celebrate with you!</p>
+                <div style="font-size: 4rem; margin-top: 20px;">🧸💐</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Audio Element (Hidden) -->
+    <audio id="audio-player" preload="metadata"></audio>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="player.js"></script>
+</body>
+</html>
